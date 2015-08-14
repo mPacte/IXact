@@ -1,0 +1,383 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+@foreach(var el1 in ViewBag.Articles)
+{
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title">@el1.Titre</h3>
+        </div>
+        <div class="panel-body">
+            @el1.Texte
+        </div>
+        @{var datestr = "La Direction, " + (el1.DatePublication == null ? "" : ((DateTime)el1.DatePublication).ToString(EntityModele.General.FormatDate));}
+        <div class="panel-footer">@datestr</div>
+    </div>
+
+}
+
+<div class="row">
+    <div class="col-md-4">
+        <h2>Getting started</h2>
+        <p>
+            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+            enables a clean separation of concerns and gives you full control over markup
+            for enjoyable, agile development.
+        </p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Get more libraries</h2>
+        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Web Hosting</h2>
+        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+        <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+    </div>
+</div>
+
+
+
+
+
+
+
+@*<asp:Content ID="HeaderContent" runat="server" ContentPlaceHolderID="HeadContent">
+    <script type="text/javascript" src="Scripts/ajaxfileupload.js"></script>
+    <style type="text/css">
+        .ui-resizable-helper {
+            border: 1px dotted gray;
+        }
+
+        .style1 {
+            height: 21px;
+        }
+    </style>
+    <script type="text/javascript">
+        var tableResponsable = '#' + '<%=tableResponsable.ClientID %>';
+        var DivNews2 = '#' + '<%=DivNews2.ClientID %>';
+        var DivNews1 = '#' + '<%=DivNews1.ClientID %>';
+
+        $(document).ready(function () {
+            var d = new Date();
+            var today = d.getDate() + "/" + (d.getMonth() + 1) + "/" + d.getFullYear();
+            $(tableResponsable).find('.popupCommandes').append("Statistiques au " + today);
+        });
+
+        $(document).ready(function () {
+            //$("#divImageArticle").resizable({ animate: true });
+            $("#divImgArticleDesign").resizable({ handles: "s, w, sw" });
+        });
+        function UploadFileNow() {
+            var value = $("#fileupload").val(); //alert(value);
+            //        	        if (value != '') {
+
+            //$("#form1").submit();
+            //        	            var pageUrl = '<%=ResolveUrl("Default.aspx")%>';
+            //        	            var loc = window.location.href;
+            //        	            loc = (loc.substr(loc.length - 1, 1) == "/") ? loc + "Default.aspx" : loc;
+            //        	            var params = $.toJSON({ 'filename': value });
+            //        	            alert(params);
+            $.ajax({
+                type: "POST",
+                url: "Default.aspx/Uploadfile",
+                data: "{filename:'" + value + "'}",
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: OnSuccessCall,
+                error: OnErrorCall
+            });
+            //        	        }
+        }
+
+        function OnSuccessCall(response) {
+            alert('success');
+        }
+
+        function OnErrorCall(response) {
+            alert("errrrrr" + response.status + " " + response.statusText);
+        }
+
+        $('#fileupload').fileupload({
+            url: '/path/to/upload/handler.json',
+            add: function (e, data) {
+                alert(data);
+                // automatically start upload process
+                $('#fileupload').submit();
+            }
+        });
+    </script>
+    <script type="text/javascript">
+        function ajaxFileUpload_() {
+            //            $("#loading").ajaxStart(function () {
+            //                $(this).show();
+            //            }).ajaxComplete(function () {
+            //                $(this).hide();
+            //            });
+            $.ajaxFileUpload
+    (
+        {
+            url: 'HandlerFU.ashx',
+            secureuri: false,
+            fileElementId: $(FileUpload),
+            dataType: 'json',
+            data: { name: 'logan', id: 'id' },
+            success: function (data) {
+                alert(data);
+                if (typeof (data.error) != 'undefined') {
+                    if (data.error != '') {
+                        alert(data.error);
+                    } else {
+                        alert(data.msg);
+                    }
+                }
+            },
+            error: function (data) {
+                alert(data);
+            }
+        }
+    )
+            var photo = 'Images/ImagesArticles/' + $("#fileUpload1").val();
+            $("#imgArticleDesign").attr('src', photo);
+            apercu();
+            return false;
+
+        }
+
+        function apercu() {
+            var photo = 'Images/ImagesArticles/' + $("#fileUpload1").val();
+            //        $("#imgArticleDesign").attr('src', "Images/ImagesArticles/discussion1.jpg");
+            $("#imgArticleDesign").attr('src', photo);
+            $("#imgArticleDesign").attr('width', $("#txtLargeur").val());
+            $("#imgArticleDesign").animate();
+            return false;
+        }
+    </script>
+
+    <script language="javascript">
+        function make_equal_heights() {
+            if ((document.getElementById('div_A').offsetHeight) > (document.getElementById('div_B').offsetHeight)) {
+                document.getElementById('div_B').style.height = (document.getElementById('div_A').offsetHeight - 14) + "px";
+            }
+            else {
+                document.getElementById('div_A').style.height = (document.getElementById('div_B').offsetHeight) + "px"
+            }
+        }
+        $(document).ready(function () {
+            make_equal_heights();
+        });
+
+    </script>
+</asp:Content>
+<asp:Content ID="BodyContent" runat="server" ContentPlaceHolderID="MainContent">
+    <div>
+        <table width="100%" style="height:auto">
+            <tr>
+                <td valign="top" style="padding:0px;">
+                    <div id="div_A">
+                        <table runat="server" id="tabArticles" width="100%">
+                            <tr>
+                                <td valign="top" style="width:100%; padding:0px; font-size:24;">
+                                    <div id="divUC" runat="server" style="width:100%; padding:0px;  font-size:xx-large;">
+                                    </div>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <table runat="server" id="tableResponsable" width="100%">
+                            <tr>
+                                <td>
+                                    <div class="TableauForeHead"><asp:Label ID="lblActivites" runat="server" Text="..."></asp:Label></div>
+                                    <table style="width:100%;" class="TableauFore">
+                                        <tr>
+                                            <td style="width:45%; vertical-align:top;">
+                                                <asp:GridView ID="gvwActivites" runat="server" class="gvw"
+                                                              AutoGenerateColumns="false" onprerender="gvwSituation_PreRender">
+                                                    <columns>
+                                                        <asp:boundfield datafield="Key" headertext="Statut" />
+                                                        <asp:boundfield datafield="Value" headertext="Nombre" />
+                                                        <asp:boundfield headertext="Pourcentage" />
+                                                    </columns>
+                                                </asp:GridView>
+                                            </td>
+                                            <td style="width:55%; text-align:right;">
+                                                <asp:Chart ID="Chart3" runat="server" Palette="Pastel" BackColor="#DDDDDD" Width="400px">
+                                                    <titles>
+                                                        <asp:title shadowoffset="3" name="Items" />
+                                                    </titles>
+                                                    <legends>
+                                                        <asp:legend alignment="Center" docking="Bottom" istextautofit="False" name="Default" legendstyle="Row" backcolor="#DDDDDD" />
+                                                    </legends>
+                                                    <series>
+                                                        <asp:series name="Series1" color="#DDDDDD">
+                                                        </asp:series>
+                                                    </series>
+                                                    <chartareas>
+                                                        <asp:chartarea name="ChartArea1" backcolor="#DDDDDD">
+                                                        </asp:chartarea>
+                                                    </chartareas>
+                                                </asp:Chart>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <div class="popupCommandes" style="margin-bottom:10px;"></div>
+
+                                    <div class="TableauForeHead"><asp:Label ID="lblSecteur" runat="server" Text="..."></asp:Label></div>
+                                    <table style="width:100%;" class="TableauFore">
+                                        <tr>
+                                            <td style="width:45%; vertical-align:top;">
+                                                <asp:GridView ID="gvwSecteurClients" runat="server" class="gvw"
+                                                              AutoGenerateColumns="false" onprerender="gvwSituation_PreRender">
+                                                    <columns>
+                                                        <asp:boundfield datafield="Key" headertext="Statut" />
+                                                        <asp:boundfield datafield="Value" headertext="Nombre" />
+                                                        <asp:boundfield headertext="Pourcentage" />
+                                                    </columns>
+                                                </asp:GridView>
+                                            </td>
+                                            <td style="width:55%; text-align:right;">
+                                                <asp:Chart ID="Chart2" runat="server" Palette="Pastel" BackColor="#DDDDDD" Width="400px">
+                                                    <titles>
+                                                        <asp:title shadowoffset="3" name="Items" />
+                                                    </titles>
+                                                    <legends>
+                                                        <asp:legend alignment="Center" docking="Bottom" istextautofit="False" name="Default" legendstyle="Row" backcolor="#DDDDDD" />
+                                                    </legends>
+                                                    <series>
+                                                        <asp:series name="Series1" color="#DDDDDD">
+                                                        </asp:series>
+                                                    </series>
+                                                    <chartareas>
+                                                        <asp:chartarea name="ChartArea1" backcolor="#DDDDDD">
+                                                        </asp:chartarea>
+                                                    </chartareas>
+                                                </asp:Chart>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <div class="popupCommandes" style="margin-bottom:10px;"></div>
+
+                                    <div class="TableauForeHead"><asp:Label ID="lblSituation" runat="server" Text="..."></asp:Label></div>
+                                    <table style=" width:100%;" class="TableauFore">
+                                        <tr>
+                                            <td style="width:45%; vertical-align:top;">
+
+                                                <asp:GridView ID="gvwSituation" runat="server" class="gvw"
+                                                              AutoGenerateColumns="false" onprerender="gvwSituation_PreRender">
+                                                    <columns>
+                                                        <asp:boundfield datafield="Key" headertext="Situation" />
+                                                        <asp:boundfield datafield="Value" headertext="Nombre" />
+                                                        <asp:boundfield headertext="Pourcentage" />
+                                                    </columns>
+                                                </asp:GridView>
+                                            </td>
+                                            <td style="width:55%; text-align:right;">
+                                                <asp:Chart ID="Chart1" runat="server" Palette="Pastel" BackColor="#DDDDDD" Width="400px">
+                                                    <titles>
+                                                        <asp:title shadowoffset="3" name="Items" />
+                                                    </titles>
+                                                    <legends>
+                                                        <asp:legend alignment="Center" docking="Bottom" istextautofit="False" name="Default" legendstyle="Row" backcolor="#DDDDDD" />
+                                                    </legends>
+                                                    <series>
+                                                        <asp:series name="Series1" color="#DDDDDD">
+                                                        </asp:series>
+                                                    </series>
+                                                    <chartareas>
+                                                        <asp:chartarea name="ChartArea1" backcolor="#DDDDDD">
+                                                        </asp:chartarea>
+                                                    </chartareas>
+                                                </asp:Chart>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <div class="popupCommandes" style="margin-bottom:10px;"></div>
+
+                                    <div class="TableauForeHead"><asp:Label ID="lblConges" runat="server" Text="..."></asp:Label></div>
+                                    <table style=" width:100%;" class="TableauFore">
+                                        <tr>
+                                            <td style="width:45%; vertical-align:top;">
+
+                                                <asp:GridView ID="gvwConges" runat="server" class="gvw"
+                                                              AutoGenerateColumns="false" onprerender="gvwSituation_PreRender">
+                                                    <columns>
+                                                        <asp:boundfield datafield="Key" headertext="Situation" />
+                                                        <asp:boundfield datafield="Value" headertext="Nombre" />
+                                                        <asp:boundfield headertext="Pourcentage" />
+                                                    </columns>
+                                                </asp:GridView>
+                                            </td>
+                                            <td style="width:55%; text-align:right;">
+                                                <asp:Chart ID="Chart4" runat="server" Palette="Pastel" BackColor="#DDDDDD" Width="400px">
+                                                    <titles>
+                                                        <asp:title shadowoffset="3" name="Items" />
+                                                    </titles>
+                                                    <legends>
+                                                        <asp:legend alignment="Center" docking="Bottom" istextautofit="False" name="Default" legendstyle="Row" backcolor="#DDDDDD" />
+                                                    </legends>
+                                                    <series>
+                                                        <asp:series name="Series1" color="#DDDDDD">
+                                                        </asp:series>
+                                                    </series>
+                                                    <chartareas>
+                                                        <asp:chartarea name="ChartArea1" backcolor="#DDDDDD">
+                                                        </asp:chartarea>
+                                                    </chartareas>
+                                                </asp:Chart>
+                                            </td>
+                                        </tr>
+                                    </table>
+                                    <div class="popupCommandes" style="margin-bottom:10px;"></div>
+
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </td>
+                <td style="width: 200px; vertical-align:top;">
+                    <div id="div_B" class="News">
+                        <div runat="server" id="DivNews1" class="News DivNews1" style="margin:0px;">
+                            <asp:Label runat="server" ID="lblNews1" style="color: #FFFFFF"></asp:Label>
+                        </div>
+                        <div runat="server" id="DivNews2" class="News DivNews2" style="margin:0px;">
+                            <div style="font-size:medium;">
+                                <center><asp:Label ID="lblUser" runat="server" Text=""></asp:Label></center>
+                            </div>
+
+                            <table style=" width:100%;">
+                                <tr>
+                                    <td style="text-align:center; vertical-align:top;">
+                                        <div>
+                                            <a runat="server" id="linkprofil" href="Profil.aspx" visible="false"><img src="Images/user-red.png" title="Profil" class="divAccueil" /></a>
+                                        </div>
+                                        <div>
+                                            <a runat="server" id="linkmissions" href="MesActivites.aspx" visible="false"><img src="Images/Missions.png" title="Missions" class="divAccueil" /></a>
+                                        </div>
+                                        <div>
+                                            <a href="CRAM.aspx" visible="false"><img src="Images/Cram.png" title="CRAM" class="divAccueil" /></a>
+                                        </div>
+                                        <%--                                                       <div style="text-align:left; visibility:hidden">
+                                            <asp:Label ID="lblNom" runat="server" Text="..." CssClass="divAccueil"></asp:Label><br />
+                                            <asp:Label ID="lblFonction" runat="server" Text="..." CssClass="divAccueil"></asp:Label><br />
+                                            <asp:Label ID="lblSociete" runat="server" Text="..." CssClass="divAccueil"></asp:Label><br />
+                                            <asp:Label ID="lblSituation" runat="server" Text="..." CssClass="divAccueil"></asp:Label><br />
+                                            <p>Activité actuelle : </p>
+                                            <asp:Label ID="lblActivite" runat="server" Text="..." CssClass="divAccueil"></asp:Label><br />
+                                            <p>à </p><asp:Label ID="lblClient" runat="server" Text="..." CssClass="divAccueil"></asp:Label><br />
+                                        </div>
+                                        --%>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    <%--<div class="popupCommandes"></div>--%>
+
+                </td>
+            </tr>
+        </table>
+    </div>
+</asp:Content>*@

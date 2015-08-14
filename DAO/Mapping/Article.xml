@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<map>
+  <class name="Article" table="Article">
+    <property column="TitreArticle" name="Titre" type="string"></property>
+    <property column="TexteArticle" name="Texte" type="string"></property>
+    <property column="ImageArticle" name="Image" type="string"></property>
+    <property column="Auteur" name="NumeroAuteur" type="int"></property>
+    <property column="Createur" name="NumeroCreateur" type="int"></property>
+    <property column="TailleImage" name="ImageSize" type="int"></property>
+    <property column="DatePublication" name="DatePublication" type="int"></property>
+    <property column="TypeArticle" name="Type" type="int"></property>
+    <property column="ModeleArticle" name="Modele" type="int"></property>
+  </class>
+  <class name="Login" table="login">
+    <property column="username" name="Username" type="string"></property>
+    <property column="datelogin" name="DateLogin" type="DateTime"></property>
+    <property column="adresseip" name="AdresseIp" type="string"></property>
+  </class>
+</map>

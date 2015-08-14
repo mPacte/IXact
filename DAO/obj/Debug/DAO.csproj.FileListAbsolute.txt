@@ -1,0 +1,10 @@
+C:\Saadeddine\IntranetSSIIV2\DAO\bin\Debug\DAO.dll
+C:\Saadeddine\IntranetSSIIV2\DAO\bin\Debug\DAO.pdb
+C:\Saadeddine\IntranetSSIIV2\DAO\bin\Debug\EntityModele.dll
+C:\Saadeddine\IntranetSSIIV2\DAO\bin\Debug\log4net.dll
+C:\Saadeddine\IntranetSSIIV2\DAO\bin\Debug\EntityModele.pdb
+C:\Saadeddine\IntranetSSIIV2\DAO\obj\Debug\DAO.csprojResolveAssemblyReference.cache
+C:\Saadeddine\IntranetSSIIV2\DAO\obj\Debug\DAO.dll
+C:\Saadeddine\IntranetSSIIV2\DAO\obj\Debug\DAO.pdb
+C:\Saadeddine\IntranetSSIIV2\DAO\bin\Debug\mPacteOrm.dll
+C:\Saadeddine\IntranetSSIIV2\DAO\bin\Debug\mPacteOrm.pdb

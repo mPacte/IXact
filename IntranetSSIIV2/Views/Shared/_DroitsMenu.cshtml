@@ -1,0 +1,8 @@
+﻿
+@foreach(var dr1 in ViewBag.droits)
+{ 
+<li class="@Html.IsSelected(controller: ((string)dr1.UrlPage))">
+    <a href="@Url.Action("Index", ((string)dr1.UrlPage))"><i class="fa fa-diamond"></i> <span class="nav-label">@dr1.CaptionPage</span> <span class="label label-primary pull-right">NEW</span></a>
+</li>
+}
+
