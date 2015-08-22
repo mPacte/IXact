@@ -1,4 +1,0 @@
-C:\Saadeddine\IntranetSSIIV2\EntityModele\bin\Debug\EntityModele.dll
-C:\Saadeddine\IntranetSSIIV2\EntityModele\bin\Debug\EntityModele.pdb
-C:\Saadeddine\IntranetSSIIV2\EntityModele\obj\Debug\EntityModele.dll
-C:\Saadeddine\IntranetSSIIV2\EntityModele\obj\Debug\EntityModele.pdb

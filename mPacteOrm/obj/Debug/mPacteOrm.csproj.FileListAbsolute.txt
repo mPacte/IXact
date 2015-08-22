@@ -1,6 +1,0 @@
-C:\Saadeddine\IntranetSSIIV2\mPacteOrm\obj\Debug\mPacteOrm.csprojResolveAssemblyReference.cache
-C:\Saadeddine\IntranetSSIIV2\mPacteOrm\bin\Debug\mPacteOrm.dll
-C:\Saadeddine\IntranetSSIIV2\mPacteOrm\bin\Debug\mPacteOrm.pdb
-C:\Saadeddine\IntranetSSIIV2\mPacteOrm\bin\Debug\log4net.dll
-C:\Saadeddine\IntranetSSIIV2\mPacteOrm\obj\Debug\mPacteOrm.dll
-C:\Saadeddine\IntranetSSIIV2\mPacteOrm\obj\Debug\mPacteOrm.pdb

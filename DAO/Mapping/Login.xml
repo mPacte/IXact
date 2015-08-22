@@ -1,6 +1,0 @@
-﻿<?xml version="1.0" encoding="utf-8" ?>
-<class name="Login" table="login">
-  <property column="username" name="Username" type="string"></property>
-  <property column="datelogin" name="DateLogin" type="DateTime"></property>
-  <property column="adresseip" name="AdresseIp" type="string"></property>
-</class>
